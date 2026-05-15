@@ -34,7 +34,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/tab-tidy-*.zip
+          files: dist/tabtame-*.zip
           generate_release_notes: true
           draft: false
           prerelease: false

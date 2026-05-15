@@ -2,14 +2,14 @@
 
 ## Reporting a vulnerability
 
-If you find a security issue in Tab Tidy, please report it privately. **Do not open a public GitHub issue.**
+If you find a security issue in TabTame, please report it privately. **Do not open a public GitHub issue.**
 
 Email: **khabibtoshev@gmail.com**
 
 Include:
 - A clear description of the issue and its impact.
 - Steps to reproduce (a minimal page or sample URL is ideal).
-- Affected Tab Tidy version and Chrome version.
+- Affected TabTame version and Chrome version.
 - Your name/handle if you want credit in the changelog.
 
 You can expect:
@@ -34,4 +34,4 @@ In scope:
 
 Out of scope:
 - Vulnerabilities in Chrome itself — report those to the [Chrome VRP](https://bughunters.google.com/about/rules/chrome-friends).
-- Vulnerabilities in third-party sites that Tab Tidy interacts with.
+- Vulnerabilities in third-party sites that TabTame interacts with.

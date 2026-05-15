@@ -26,7 +26,7 @@ class SameTabLinkOpener {
     window.addEventListener('message', e => {
       if (e.source !== window) return;
       const d = e.data;
-      if (d?.source !== 'tabtidy') return;
+      if (d?.source !== 'tabtame') return;
       if (d.type === 'request-settings') {
         this.pushSettingsToMain();
       } else if (d.type === 'stat') {
@@ -38,7 +38,7 @@ class SameTabLinkOpener {
   pushSettingsToMain() {
     if (!this.settings) return;
     window.postMessage({
-      source: 'tabtidy-iso',
+      source: 'tabtame-iso',
       type: 'settings',
       settings: {
         enabled: this.settings.enabled,

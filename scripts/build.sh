@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Build a Chrome Web Store / GitHub Release zip of Tab Tidy.
-# Output: dist/tab-tidy-v<version>.zip
+# Build a Chrome Web Store / GitHub Release zip of TabTame.
+# Output: dist/tabtame-v<version>.zip
 
 set -euo pipefail
 
@@ -9,7 +9,7 @@ cd "$ROOT"
 
 VERSION=$(python3 -c "import json; print(json.load(open('manifest.json'))['version'])")
 OUT_DIR="dist"
-ZIP_NAME="tab-tidy-v${VERSION}.zip"
+ZIP_NAME="tabtame-v${VERSION}.zip"
 ZIP_PATH="${OUT_DIR}/${ZIP_NAME}"
 
 rm -rf "$OUT_DIR"

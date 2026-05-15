@@ -1,4 +1,4 @@
-# Contributing to Tab Tidy
+# Contributing to TabTame
 
 Thanks for your interest. PRs, bug reports, and feature requests are welcome.
 
@@ -7,8 +7,8 @@ Thanks for your interest. PRs, bug reports, and feature requests are welcome.
 1. Fork the repo on GitHub.
 2. Clone your fork:
    ```bash
-   git clone git@github.com:<your-username>/Tab-Tidy.git
-   cd Tab-Tidy
+   git clone git@github.com:<your-username>/TabTame.git
+   cd TabTame
    ```
 3. Create a feature branch:
    ```bash
@@ -82,7 +82,7 @@ If you add a new permission, document **why** in the PR description.
 
 Open an issue using the **Bug report** template. Include:
 - Chrome version
-- Tab Tidy version
+- TabTame version
 - A URL or minimal reproduction
 - DevTools console errors (page + service worker)
 

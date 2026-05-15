@@ -1,4 +1,4 @@
-# Tab Tidy
+# TabTame
 
 > Keep your browser clean. All links open in the current tab — no tab clutter.
 
@@ -6,7 +6,7 @@ A lightweight Chrome (Manifest V3) extension that stops the new-tab spam by redi
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-coming%20soon-lightgrey.svg)](https://github.com/thekhabib/Tab-Tidy/releases)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-coming%20soon-lightgrey.svg)](https://github.com/thekhabib/TabTame/releases)
 
 ---
 
@@ -34,11 +34,11 @@ Coming soon.
 
 ### Manual install (developer mode)
 
-1. Download the latest release zip: [tab-tidy-v1.0.1.zip](https://github.com/thekhabib/Tab-Tidy/releases/download/v1.0.1/tab-tidy-v1.0.1.zip) (or browse [all releases](https://github.com/thekhabib/Tab-Tidy/releases)) and unzip it.
+1. Download the latest release zip: [tabtame-v1.0.2.zip](https://github.com/thekhabib/TabTame/releases/download/v1.0.2/tabtame-v1.0.2.zip) (or browse [all releases](https://github.com/thekhabib/TabTame/releases)) and unzip it.
 2. Open `chrome://extensions` in Chrome.
 3. Enable **Developer mode** (top right).
-4. Click **Load unpacked** and select the `Tab-Tidy` folder.
-5. Pin the Tab Tidy icon from the puzzle menu for quick access.
+4. Click **Load unpacked** and select the `TabTame` folder.
+5. Pin the TabTame icon from the puzzle menu for quick access.
 
 ---
 
@@ -46,7 +46,7 @@ Coming soon.
 
 ### Popup
 
-Click the Tab Tidy icon to:
+Click the TabTame icon to:
 - Toggle the extension on/off.
 - Set a per-site rule for the current domain (Same Tab / New Tab / Default).
 - See your redirect stats.
@@ -97,8 +97,8 @@ icons/              Extension icons
 
 ```bash
 # clone
-git clone git@github.com:thekhabib/Tab-Tidy.git
-cd Tab-Tidy
+git clone git@github.com:thekhabib/TabTame.git
+cd TabTame
 
 # load into Chrome:
 # chrome://extensions → Developer mode → Load unpacked → select this folder
@@ -111,7 +111,7 @@ cd Tab-Tidy
 
 ```bash
 ./scripts/build.sh
-# produces dist/tab-tidy-v<version>.zip
+# produces dist/tabtame-v<version>.zip
 ```
 
 ### Releasing (maintainers)
@@ -129,7 +129,7 @@ cd Tab-Tidy
 
 PRs welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and commit style.
 
-For bugs and feature ideas, open an [issue](https://github.com/thekhabib/Tab-Tidy/issues).
+For bugs and feature ideas, open an [issue](https://github.com/thekhabib/TabTame/issues).
 
 For security reports, see [SECURITY.md](SECURITY.md) — please do not open a public issue.
 
@@ -137,7 +137,7 @@ For security reports, see [SECURITY.md](SECURITY.md) — please do not open a pu
 
 ## Roadmap
 
-Track planned work via [GitHub Issues](https://github.com/thekhabib/Tab-Tidy/issues) and the [Unreleased section of CHANGELOG.md](CHANGELOG.md#unreleased).
+Track planned work via [GitHub Issues](https://github.com/thekhabib/TabTame/issues) and the [Unreleased section of CHANGELOG.md](CHANGELOG.md#unreleased).
 
 ---
 

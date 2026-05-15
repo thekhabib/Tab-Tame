@@ -26,14 +26,14 @@ What actually happened. Screenshots help.
 
 ## Environment
 
-- Tab Tidy version: (see `chrome://extensions`)
+- TabTame version: (see `chrome://extensions`)
 - Chrome version: (see `chrome://version`)
 - OS: 
 
 ## Console errors
 
 Open DevTools (F12) on the affected page **and** open the service worker console
-(`chrome://extensions` → Tab Tidy → "service worker"). Paste any errors here.
+(`chrome://extensions` → TabTame → "service worker"). Paste any errors here.
 
 ```
 (paste here)

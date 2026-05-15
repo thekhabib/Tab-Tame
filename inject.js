@@ -1,6 +1,6 @@
 (() => {
-  const TAG = 'tabtidy';
-  const ISO_TAG = 'tabtidy-iso';
+  const TAG = 'tabtame';
+  const ISO_TAG = 'tabtame-iso';
   const domain = location.hostname.replace(/^www\./, '');
   let settings = { enabled: true, focusMode: false, siteRules: {} };
 

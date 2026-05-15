@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Tab Tidy",
-  "version": "1.0.1",
+  "name": "TabTame",
+  "version": "1.0.2",
   "description": "All links open in the current tab — no tab clutter. Per-site rules, focus mode, tab search, idle close, and more.",
   "author": "Khabib Toshev",
-  "homepage_url": "https://github.com/thekhabib/Tab-Tidy",
+  "homepage_url": "https://github.com/thekhabib/TabTame",
 
   "icons": {
     "16": "icons/icon16.png",
@@ -18,7 +18,7 @@
       "24": "icons/icon24.png",
       "32": "icons/icon32.png"
     },
-    "default_title": "Tab Tidy",
+    "default_title": "TabTame",
     "default_popup": "popup.html"
   },
 
