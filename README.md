@@ -34,7 +34,7 @@ Coming soon.
 
 ### Manual install (developer mode)
 
-1. Clone or [download a release](https://github.com/thekhabib/Tab-Tidy/releases) and unzip it.
+1. Download the latest release zip: [tab-tidy-v1.0.1.zip](https://github.com/thekhabib/Tab-Tidy/releases/download/v1.0.1/tab-tidy-v1.0.1.zip) (or browse [all releases](https://github.com/thekhabib/Tab-Tidy/releases)) and unzip it.
 2. Open `chrome://extensions` in Chrome.
 3. Enable **Developer mode** (top right).
 4. Click **Load unpacked** and select the `Tab-Tidy` folder.
