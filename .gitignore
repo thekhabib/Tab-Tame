@@ -27,3 +27,6 @@ Thumbs.db
 
 # Local-only docs
 ROADMAP.md
+
+# Claude Code local data
+.claude/

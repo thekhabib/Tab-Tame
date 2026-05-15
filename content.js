@@ -1,4 +1,4 @@
-class SameTabLinkOpener {
+class TabTameLinkOpener {
   constructor() {
     this.settings    = null;
     this.domain      = location.hostname.replace(/^www\./, '');
@@ -129,7 +129,7 @@ class SameTabLinkOpener {
 
 function boot() {
   if (typeof chrome === 'undefined' || !chrome.storage) return;
-  try { new SameTabLinkOpener(); } catch (_) {}
+  try { new TabTameLinkOpener(); } catch (_) {}
 }
 
 document.readyState === 'loading'

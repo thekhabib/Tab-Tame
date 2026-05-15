@@ -24,6 +24,10 @@ This data stays on your machine. There is no cloud sync, no analytics, no teleme
 | `alarms` | Run the idle-close check once per minute. |
 | `<all_urls>` (host permissions) | Inject the content scripts that rewrite links and patch `window.open` on every page. The scripts only modify navigation behavior — they do not read page content or transmit data. |
 
+## Note on `noopener` / `noreferrer`
+
+When TabTame rewrites a `target="_blank"` link to open in the current tab, it also strips `rel="noopener"` and `rel="noreferrer"` from that link. These attributes are designed to isolate a *new* tab from its opener; once the navigation happens in the same tab, they no longer apply. No referrer or window-handle data is transmitted by TabTame itself — your browser's normal referrer policy still controls what is sent to the destination.
+
 ## Third parties
 
 None. TabTame does not use third-party services, SDKs, or analytics.

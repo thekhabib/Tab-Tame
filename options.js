@@ -133,7 +133,7 @@ document.getElementById('btnExport').addEventListener('click', () => {
   const blob = new Blob([JSON.stringify(settings, null, 2)], { type: 'application/json' });
   const a    = Object.assign(document.createElement('a'), {
     href: URL.createObjectURL(blob),
-    download: 'same-tab-settings.json'
+    download: 'tabtame-settings.json'
   });
   a.click();
   toast('Exported');

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.5] — 2026-05-15
+
+### Changed
+- Rename internal `SameTabLinkOpener` class to `TabTameLinkOpener` for consistency.
+- Settings export filename is now `tabtame-settings.json` (was `same-tab-settings.json`).
+- `search.html` window title is now `TabTame — Search`.
+
+### Added
+- PRIVACY.md note explaining that `rel="noopener"` / `rel="noreferrer"` are stripped from rewritten links and why this is safe.
+
+### Fixed
+- `.gitignore` now excludes `.claude/` so local Claude Code settings are not accidentally committed.
+
 ## [1.0.4] — 2026-05-15
 
 ### Changed
@@ -45,7 +58,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Toggle hotkey (`Alt+Shift+S`).
 - Redirect counter stored in local storage.
 
-[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.1...v1.0.2
