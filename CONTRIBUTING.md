@@ -7,7 +7,7 @@ Thanks for your interest. PRs, bug reports, and feature requests are welcome.
 1. Fork the repo on GitHub.
 2. Clone your fork:
    ```bash
-   git clone git@github.com:<your-username>/TabTame.git
+   git clone git@github.com:<your-username>/Tab-Tame.git
    cd TabTame
    ```
 3. Create a feature branch:

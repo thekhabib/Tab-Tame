@@ -33,7 +33,7 @@ KEY FEATURES
 
 PRIVACY
 
-TabTame collects nothing. No telemetry, no analytics, no remote servers. All data stays on your device. The full source is open at https://github.com/thekhabib/TabTame.
+TabTame collects nothing. No telemetry, no analytics, no remote servers. All data stays on your device. The full source is open at https://github.com/thekhabib/Tab-Tame.
 
 PERMISSIONS
 
@@ -44,16 +44,16 @@ PERMISSIONS
 
 OPEN SOURCE
 
-MIT licensed. Source, issues, and contributions: https://github.com/thekhabib/TabTame
+MIT licensed. Source, issues, and contributions: https://github.com/thekhabib/Tab-Tame
 
 ## Privacy policy URL
 
-https://github.com/thekhabib/TabTame/blob/main/PRIVACY.md
+https://github.com/thekhabib/Tab-Tame/blob/main/PRIVACY.md
 
 ## Support URL
 
-https://github.com/thekhabib/TabTame/issues
+https://github.com/thekhabib/Tab-Tame/issues
 
 ## Homepage URL
 
-https://github.com/thekhabib/TabTame
+https://github.com/thekhabib/Tab-Tame

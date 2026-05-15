@@ -6,7 +6,7 @@ A lightweight Chrome (Manifest V3) extension that stops the new-tab spam by redi
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-coming%20soon-lightgrey.svg)](https://github.com/thekhabib/TabTame/releases)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-coming%20soon-lightgrey.svg)](https://github.com/thekhabib/Tab-Tame/releases)
 
 ---
 
@@ -34,7 +34,7 @@ Coming soon.
 
 ### Manual install (developer mode)
 
-1. Download the latest release zip: [tabtame-v1.0.2.zip](https://github.com/thekhabib/TabTame/releases/download/v1.0.2/tabtame-v1.0.2.zip) (or browse [all releases](https://github.com/thekhabib/TabTame/releases)) and unzip it.
+1. Download the latest release zip: [tabtame-v1.0.3.zip](https://github.com/thekhabib/Tab-Tame/releases/download/v1.0.3/tabtame-v1.0.3.zip) (or browse [all releases](https://github.com/thekhabib/Tab-Tame/releases)) and unzip it.
 2. Open `chrome://extensions` in Chrome.
 3. Enable **Developer mode** (top right).
 4. Click **Load unpacked** and select the `TabTame` folder.
@@ -97,7 +97,7 @@ icons/              Extension icons
 
 ```bash
 # clone
-git clone git@github.com:thekhabib/TabTame.git
+git clone git@github.com:thekhabib/Tab-Tame.git
 cd TabTame
 
 # load into Chrome:
@@ -129,7 +129,7 @@ cd TabTame
 
 PRs welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and commit style.
 
-For bugs and feature ideas, open an [issue](https://github.com/thekhabib/TabTame/issues).
+For bugs and feature ideas, open an [issue](https://github.com/thekhabib/Tab-Tame/issues).
 
 For security reports, see [SECURITY.md](SECURITY.md) — please do not open a public issue.
 
@@ -137,7 +137,7 @@ For security reports, see [SECURITY.md](SECURITY.md) — please do not open a pu
 
 ## Roadmap
 
-Track planned work via [GitHub Issues](https://github.com/thekhabib/TabTame/issues) and the [Unreleased section of CHANGELOG.md](CHANGELOG.md#unreleased).
+Track planned work via [GitHub Issues](https://github.com/thekhabib/Tab-Tame/issues) and the [Unreleased section of CHANGELOG.md](CHANGELOG.md#unreleased).
 
 ---
 

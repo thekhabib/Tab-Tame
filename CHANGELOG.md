@@ -7,13 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] — 2026-05-15
+
+### Fixed
+- Correct GitHub repo URL in `manifest.json` `homepage_url` and all docs (`thekhabib/TabTame` → `thekhabib/Tab-Tame`).
+
 ## [1.0.2] — 2026-05-15
 
 ### Changed
 - **Renamed extension to TabTame** (was Tab Tidy). The previous name conflicted with an existing Chrome Web Store listing.
 - Internal `postMessage` source/target tags renamed from `tabtidy` / `tabtidy-iso` to `tabtame` / `tabtame-iso`.
 - Build artifact renamed from `tab-tidy-vX.Y.Z.zip` to `tabtame-vX.Y.Z.zip`.
-- Repository moved to `github.com/thekhabib/TabTame`.
+- Repository moved to `github.com/thekhabib/Tab-Tame`.
 
 ## [1.0.1] — 2026-05-15
 
@@ -35,7 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Toggle hotkey (`Alt+Shift+S`).
 - Redirect counter stored in local storage.
 
-[Unreleased]: https://github.com/thekhabib/TabTame/compare/v1.0.2...HEAD
-[1.0.2]: https://github.com/thekhabib/TabTame/compare/v1.0.1...v1.0.2
-[1.0.1]: https://github.com/thekhabib/TabTame/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/thekhabib/TabTame/releases/tag/v1.0.0
+[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/thekhabib/Tab-Tame/releases/tag/v1.0.0

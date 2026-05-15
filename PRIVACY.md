@@ -30,7 +30,7 @@ None. TabTame does not use third-party services, SDKs, or analytics.
 
 ## Open source
 
-The full source is available at <https://github.com/thekhabib/TabTame>. You can audit exactly what the extension does.
+The full source is available at <https://github.com/thekhabib/Tab-Tame>. You can audit exactly what the extension does.
 
 ## Contact
 
