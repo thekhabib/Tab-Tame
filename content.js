@@ -111,12 +111,29 @@ class TabTameLinkOpener {
 
   setupObserver() {
     let timer;
-    new MutationObserver(() => {
+    let pending = false;
+    const observer = new MutationObserver(mutations => {
+      if (pending) return;
+      for (const m of mutations) {
+        for (const node of m.addedNodes) {
+          if (node.nodeType !== 1) continue;
+          if (node.tagName === 'A' || node.querySelector?.('a[target="_blank"]')) {
+            pending = true;
+            break;
+          }
+        }
+        if (pending) break;
+      }
+      if (!pending) return;
       clearTimeout(timer);
       timer = setTimeout(() => {
+        pending = false;
         if (this.isActive()) this.processLinks();
-      }, 150);
-    }).observe(document.documentElement, { childList: true, subtree: true });
+      }, 300);
+    });
+    const start = () => observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
+    if (document.body) start();
+    else document.addEventListener('DOMContentLoaded', start, { once: true });
   }
 
   setupMessageListener() {
