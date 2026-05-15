@@ -10,14 +10,12 @@ class TabTameLinkOpener {
     await this.loadSettings();
     this.setupBridge();
     this.pushSettingsToMain();
-    if (this.settings.enabled && this.isActive()) {
-      this.processLinks();
-      this.setupObserver();
-      const iv = setInterval(() => {
-        if (!chrome.runtime?.id) { clearInterval(iv); return; }
-        this.flushStats();
-      }, 5000);
-    }
+    this.processLinks();
+    this.setupObserver();
+    const iv = setInterval(() => {
+      if (!chrome.runtime?.id) { clearInterval(iv); return; }
+      this.flushStats();
+    }, 5000);
     this.setupMessageListener();
     this.setupStorageWatcher();
   }
@@ -53,7 +51,10 @@ class TabTameLinkOpener {
     chrome.storage.onChanged.addListener((changes, area) => {
       if (area !== 'local') return;
       if (changes.enabled || changes.focusMode || changes.siteRules) {
-        this.loadSettings().then(() => this.pushSettingsToMain());
+        this.loadSettings().then(() => {
+          this.pushSettingsToMain();
+          this.processLinks();
+        });
       }
     });
   }
@@ -87,6 +88,7 @@ class TabTameLinkOpener {
   }
 
   processLinks() {
+    if (!this.isActive()) return;
     document.querySelectorAll('a[target="_blank"]:not([data-same-tab])').forEach(link => {
       if (!this.shouldRedirect(link)) return;
       link.setAttribute('target', '_self');
@@ -103,10 +105,13 @@ class TabTameLinkOpener {
 
   flushStats() {
     if (this.pendingStat === 0 || !chrome.runtime?.id) return;
-    try {
-      chrome.runtime.sendMessage({ action: 'stat_redirected', count: this.pendingStat });
-    } catch (_) {}
+    const count = this.pendingStat;
     this.pendingStat = 0;
+    try {
+      chrome.runtime.sendMessage({ action: 'stat_redirected', count }, () => {
+        void chrome.runtime.lastError;
+      });
+    } catch (_) {}
   }
 
   setupObserver() {
@@ -128,7 +133,7 @@ class TabTameLinkOpener {
       clearTimeout(timer);
       timer = setTimeout(() => {
         pending = false;
-        if (this.isActive()) this.processLinks();
+        this.processLinks();
       }, 300);
     });
     const start = () => observer.observe(document.body || document.documentElement, { childList: true, subtree: true });

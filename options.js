@@ -149,7 +149,13 @@ document.getElementById('btnImport').addEventListener('click', () => {
     reader.onload = e => {
       try {
         const data = JSON.parse(e.target.result);
-        chrome.storage.local.set(data, () => { load(); toast('Imported'); });
+        if (typeof data !== 'object' || data === null || Array.isArray(data)) throw new Error();
+        const allowed = new Set(Object.keys(DEFAULTS));
+        const sanitized = Object.fromEntries(
+          Object.entries(data).filter(([k]) => allowed.has(k))
+        );
+        if (Object.keys(sanitized).length === 0) throw new Error();
+        chrome.storage.local.set(sanitized, () => { load(); toast('Imported'); });
       } catch {
         toast('Invalid file');
       }

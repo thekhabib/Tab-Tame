@@ -52,7 +52,7 @@ chrome.alarms.onAlarm.addListener(async alarm => {
   if (!enabled || idleClose === 0) return;
   const cutoff = idleClose * 60 * 1000;
   const now = Date.now();
-  const tabs = await chrome.tabs.query({ currentWindow: true });
+  const tabs = await chrome.tabs.query({});
   for (const tab of tabs) {
     if (tab.active || tab.pinned) continue;
     const last = tabLastActive[tab.id];
@@ -73,8 +73,8 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo) => {
   if (!changeInfo.url) return;
   const { enabled, duplicateBlocker } = await getSettings();
   if (!enabled || !duplicateBlocker) return;
-  const tabs = await chrome.tabs.query({ url: changeInfo.url, currentWindow: true });
-  const dupes = tabs.filter(t => t.id !== tabId);
+  const tabs = await chrome.tabs.query({ currentWindow: true });
+  const dupes = tabs.filter(t => t.id !== tabId && t.url === changeInfo.url);
   if (dupes.length > 0) {
     chrome.tabs.update(dupes[0].id, { active: true });
     chrome.tabs.remove(tabId);

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabTame",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "All links open in the current tab — no tab clutter. Per-site rules, focus mode, tab search, idle close, and more.",
   "author": "Khabib Toshev",
   "homepage_url": "https://github.com/thekhabib/Tab-Tame",
@@ -27,6 +27,12 @@
   },
 
   "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["settings-preload.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
     {
       "matches": ["<all_urls>"],
       "js": ["inject.js"],

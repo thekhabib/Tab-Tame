@@ -28,7 +28,10 @@ function save(patch) {
 
 function notifyContentScripts() {
   chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-    if (tab?.id) chrome.tabs.sendMessage(tab.id, { action: 'settings_updated' }).catch(() => {});
+    if (!tab?.id || !tab.url?.startsWith('http')) return;
+    chrome.tabs.sendMessage(tab.id, { action: 'settings_updated' }, () => {
+      void chrome.runtime.lastError;
+    });
   });
 }
 

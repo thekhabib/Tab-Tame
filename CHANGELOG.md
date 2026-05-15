@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.7] — 2026-05-15
+
+### Fixed
+- Idle close now checks all windows, not just the current one.
+- Duplicate tab blocker uses exact JS string comparison instead of `chrome.tabs.query({ url })` match patterns, which mishandled URLs with query strings and fragments.
+- `popup.js`: suppress `runtime.lastError` when sending `settings_updated` to tabs where the content script is not loaded (e.g. email views, iframes, pages mid-navigation). Uses callback form with `void chrome.runtime.lastError`.
+- `content.js`: same `runtime.lastError` suppression fix in `flushStats`. Stats counter is now saved before the async send, not after, preventing double-count on retry.
+- `content.js`: extension re-enable now immediately processes existing links and resumes observing DOM mutations. Previously, if the extension was disabled when a page loaded, toggling it back on had no effect until the next page load.
+- `content.js`: settings changes (enable/disable, focus mode, site rules) now re-run `processLinks` on the current page.
+- Settings import now validates keys against the known schema and rejects files with no recognised keys, preventing storage corruption from malformed JSON.
+
+### Added
+- `settings-preload.js`: new ISOLATED content script injected at `document_start` that pushes stored settings to `inject.js` via `postMessage` before page scripts run, closing the race window where `window.open` calls made before `document_end` used hardcoded defaults.
+- Playwright e2e test suite (`tests/e2e/`) with 5 tests covering same-tab redirect, `window.open` interception, master toggle, and per-site rules.
+- GitHub Actions CI workflow: runs e2e tests and build check on every push and pull request.
+- GitHub Actions release workflow: runs tests, builds zip, and publishes a GitHub Release on version tags.
+
 ## [1.0.6] — 2026-05-15
 
 ### Performance

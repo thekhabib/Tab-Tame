@@ -21,6 +21,7 @@ FILES=(
   background.js
   content.js
   inject.js
+  settings-preload.js
   popup.html
   popup.js
   options.html
