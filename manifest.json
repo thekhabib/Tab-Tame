@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabTame",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "All links open in the current tab — no tab clutter. Per-site rules, focus mode, tab search, idle close, and more.",
   "author": "Khabib Toshev",
   "homepage_url": "https://github.com/thekhabib/Tab-Tame",
@@ -50,7 +50,7 @@
   "commands": {
     "toggle-extension": {
       "suggested_key": { "default": "Alt+Shift+S" },
-      "description": "Toggle Same Tab on/off"
+      "description": "Toggle TabTame on/off"
     },
     "search-tabs": {
       "suggested_key": { "default": "Ctrl+Shift+F" },

@@ -34,7 +34,7 @@ Coming soon.
 
 ### Manual install (developer mode)
 
-1. Download the latest release zip: [tabtame-v1.0.3.zip](https://github.com/thekhabib/Tab-Tame/releases/download/v1.0.3/tabtame-v1.0.3.zip) (or browse [all releases](https://github.com/thekhabib/Tab-Tame/releases)) and unzip it.
+1. Download the latest release zip: [tabtame-v1.0.4.zip](https://github.com/thekhabib/Tab-Tame/releases/download/v1.0.4/tabtame-v1.0.4.zip) (or browse [all releases](https://github.com/thekhabib/Tab-Tame/releases)) and unzip it.
 2. Open `chrome://extensions` in Chrome.
 3. Enable **Developer mode** (top right).
 4. Click **Load unpacked** and select the `TabTame` folder.

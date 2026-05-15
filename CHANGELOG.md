@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] — 2026-05-15
+
+### Changed
+- Update popup logo, options page title/heading, and toggle command description from "Same Tab" to "TabTame" so the UI matches the new product name.
+
 ## [1.0.3] — 2026-05-15
 
 ### Fixed
@@ -40,7 +45,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Toggle hotkey (`Alt+Shift+S`).
 - Redirect counter stored in local storage.
 
-[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.0...v1.0.1
