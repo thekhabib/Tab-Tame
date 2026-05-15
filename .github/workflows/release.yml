@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify tag matches manifest version
+        run: |
+          MANIFEST_VERSION=$(grep -E '"version"\s*:' manifest.json | head -n1 | sed -E 's/.*"version"\s*:\s*"([^"]+)".*/\1/')
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          echo "manifest.json version: $MANIFEST_VERSION"
+          echo "git tag version:       $TAG_VERSION"
+          if [ "$MANIFEST_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match manifest.json version $MANIFEST_VERSION"
+            exit 1
+          fi
+
+      - name: Build zip
+        run: |
+          chmod +x scripts/build.sh
+          ./scripts/build.sh
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/tab-tidy-*.zip
+          generate_release_notes: true
+          draft: false
+          prerelease: false
