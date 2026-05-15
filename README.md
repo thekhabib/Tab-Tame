@@ -137,7 +137,7 @@ For security reports, see [SECURITY.md](SECURITY.md) — please do not open a pu
 
 ## Roadmap
 
-See [ROADMAP.md](ROADMAP.md).
+Track planned work via [GitHub Issues](https://github.com/thekhabib/Tab-Tidy/issues) and the [Unreleased section of CHANGELOG.md](CHANGELOG.md#unreleased).
 
 ---
 
