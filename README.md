@@ -34,7 +34,7 @@ Coming soon.
 
 ### Manual install (developer mode)
 
-1. Download the latest release zip: [tabtame-v1.0.6.zip](https://github.com/thekhabib/Tab-Tame/releases/download/v1.0.6/tabtame-v1.0.6.zip) (or browse [all releases](https://github.com/thekhabib/Tab-Tame/releases)) and unzip it.
+1. Download the latest release zip: [tabtame-v1.0.7.zip](https://github.com/thekhabib/Tab-Tame/releases/download/v1.0.7/tabtame-v1.0.7.zip) (or browse [all releases](https://github.com/thekhabib/Tab-Tame/releases)) and unzip it.
 2. Open `chrome://extensions` in Chrome.
 3. Enable **Developer mode** (top right).
 4. Click **Load unpacked** and select the `TabTame` folder.
@@ -79,14 +79,16 @@ Customize at `chrome://extensions/shortcuts`.
 ## Architecture
 
 ```
-manifest.json       MV3 manifest, perms, commands
-background.js       Service worker — alarms, tab listeners, stats, commands
-content.js          ISOLATED content script — rewrites <a target="_blank">
-inject.js           MAIN world content script — patches window.open
-popup.html / .js    Toolbar popup
-options.html / .js  Settings page
-search.html / .js   Fuzzy tab search popup
-icons/              Extension icons
+manifest.json         MV3 manifest, perms, commands
+background.js         Service worker — alarms, tab listeners, stats, commands
+settings-preload.js   ISOLATED document_start script — pushes settings before page scripts run
+content.js            ISOLATED content script — rewrites <a target="_blank">
+inject.js             MAIN world content script — patches window.open
+popup.html / .js      Toolbar popup
+options.html / .js    Settings page
+search.html / .js     Fuzzy tab search popup
+icons/                Extension icons
+tests/e2e/            Playwright end-to-end tests
 ```
 
 **Why two content scripts?** Chrome content scripts run in an isolated world by default, so they cannot override the page's own `window.open`. SPAs (Angular, React) often open new tabs from JS click handlers, not HTML attributes. `inject.js` runs in the MAIN world to patch `window.open` directly; it gets settings from `content.js` over `window.postMessage`.
@@ -98,13 +100,22 @@ icons/              Extension icons
 ```bash
 # clone
 git clone git@github.com:thekhabib/Tab-Tame.git
-cd TabTame
+cd Tab-Tame
+
+# install dev dependencies (Playwright for e2e tests)
+npm install
 
 # load into Chrome:
 # chrome://extensions → Developer mode → Load unpacked → select this folder
 
 # after edits to background.js or manifest.json, click the reload icon
 # on the extension card. content/inject script changes need a page reload.
+```
+
+### Run tests
+
+```bash
+npm test
 ```
 
 ### Build a release zip
