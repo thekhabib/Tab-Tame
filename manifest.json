@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Tab Tidy",
-  "version": "1.0.0",
-  "description": "Keep your browser clean. All links open in the current tab — no tab clutter. Per-site rules, focus mode, tab search, idle close, and more.",
+  "version": "1.0.1",
+  "description": "All links open in the current tab — no tab clutter. Per-site rules, focus mode, tab search, idle close, and more.",
   "author": "Khabib Toshev",
   "homepage_url": "https://github.com/thekhabib/Tab-Tidy",
 

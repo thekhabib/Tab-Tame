@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] — 2026-05-15
+
+### Fixed
+- Shorten extension description to fit Chrome Web Store 132-char limit (was 138).
+
 ## [1.0.0] — 2026-05-15
 
 ### Added
@@ -22,5 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Toggle hotkey (`Alt+Shift+S`).
 - Redirect counter stored in local storage.
 
-[Unreleased]: https://github.com/thekhabib/Tab-Tidy/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/thekhabib/Tab-Tidy/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/thekhabib/Tab-Tidy/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/thekhabib/Tab-Tidy/releases/tag/v1.0.0

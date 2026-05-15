@@ -4,7 +4,7 @@
 Tab Tidy — Same Tab Link Opener
 
 ## Short description (max 132 chars)
-Keep your browser clean. All links open in the current tab. Per-site rules, focus mode, tab search, idle close, and more.
+All links open in the current tab — no tab clutter. Per-site rules, focus mode, tab search, idle close, and more.
 
 ## Category
 Productivity
