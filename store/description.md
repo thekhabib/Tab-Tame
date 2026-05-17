@@ -21,6 +21,7 @@ Every link that would open in a new tab — whether from `target="_blank"` or a 
 KEY FEATURES
 
 • Same-tab navigation — every link opens in the current tab.
+• Lighter on RAM — fewer tabs means less memory; tab limit and idle close help further.
 • Works on SPAs — patches `window.open` in the page context, not just HTML attributes.
 • Per-site rules — force same-tab or skip TabTame entirely on chosen domains.
 • Focus mode — only redirect cross-domain links; same-domain links keep their original behavior.

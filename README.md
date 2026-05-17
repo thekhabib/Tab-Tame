@@ -26,6 +26,7 @@ Works on any Chromium-based browser with MV3: Chrome, Edge, Brave, Opera, Vivald
 - **Quick switch** — `Ctrl+Shift+1` … `9` jump to tabs by index.
 - **Stats + Import/Export** — redirect counter with reset; JSON backup with schema-validated restore.
 - **Dark mode** — follows the system `prefers-color-scheme` setting.
+- **Lighter on RAM** — fewer tabs mean less memory; tab limit and idle close help further.
 - **Zero telemetry** — see [PRIVACY.md](PRIVACY.md).
 
 ---
