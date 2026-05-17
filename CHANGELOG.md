@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.8] — 2026-05-18
+
+### Fixed
+- `background.js`: on browser launch (`chrome.runtime.onStartup`), reset all `tabActivity` timestamps to now so stale persisted values from a previous session can't trigger an immediate idle-close sweep when the user reopens the browser. Also: untracked tabs encountered by the idle alarm are now touched instead of left undefined, so the next alarm cycle handles them correctly.
+
+### Added
+- Dark mode: popup, options, and tab-search popups now follow the system `prefers-color-scheme: dark` setting.
+- ESLint with `recommended` rules + Chrome extension globals. New `npm run lint` script; CI and release workflows run lint before tests.
+
 ## [1.0.7] — 2026-05-15
 
 ### Fixed
@@ -82,7 +91,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Toggle hotkey (`Alt+Shift+S`).
 - Redirect counter stored in local storage.
 
-[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.8...HEAD
+[1.0.8]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.7...v1.0.8
 [1.0.6]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.3...v1.0.4

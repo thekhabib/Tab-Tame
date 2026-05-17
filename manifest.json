@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TabTame",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "All links open in the current tab — no tab clutter. Per-site rules, focus mode, tab search, idle close, and more.",
   "author": "Khabib Toshev",
   "homepage_url": "https://github.com/thekhabib/Tab-Tame",

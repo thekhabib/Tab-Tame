@@ -194,6 +194,34 @@
       pointer-events: none;
     }
     .toast.show { opacity: 1; }
+
+    @media (prefers-color-scheme: dark) {
+      body { color: #e8eaed; background: #1a1a1a; }
+      h1 { color: #8ab4f8; }
+      .section { background: #2a2a2a; border-color: #3a3a3a; }
+      .section-title { color: #9aa0a6; }
+      .row { border-bottom-color: #3a3a3a; }
+      .row-label span, .hint, .stat-label, .empty-list { color: #80868b; }
+      .slider { background: #5f6368; }
+      input:checked + .slider { background: #8ab4f8; }
+      .num-input, .add-input, .rule-type-select, .btn-io {
+        background: #1f1f1f; border-color: #4a4a4a; color: #e8eaed;
+      }
+      .num-input:focus, .add-input:focus, .rule-type-select:focus { border-color: #8ab4f8; }
+      .rule-item { background: #1f1f1f; }
+      .rule-badge.same { background: #1e3a5f; color: #8ab4f8; }
+      .rule-badge.new { background: #5c2b29; color: #f28b82; }
+      .btn-remove { color: #5f6368; }
+      .btn-remove:hover { color: #f28b82; }
+      .btn-add { background: #8ab4f8; color: #1f1f1f; }
+      .btn-add:hover { background: #aecbfa; }
+      .btn-io:hover { border-color: #8ab4f8; color: #8ab4f8; }
+      .btn-reset { border-color: #4a4a4a; color: #9aa0a6; }
+      .btn-reset:hover { border-color: #f28b82; color: #f28b82; }
+      .stat-num { color: #8ab4f8; }
+      .hint a { color: #8ab4f8; }
+      .toast { background: #e8eaed; color: #1f1f1f; }
+    }
   </style>
 </head>
 <body>

@@ -1,13 +1,17 @@
 {
   "name": "tabtame",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "private": true,
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "build": "bash scripts/build.sh"
+    "build": "bash scripts/build.sh",
+    "lint": "eslint ."
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.0"
+    "@eslint/js": "^9.39.4",
+    "@playwright/test": "^1.49.0",
+    "eslint": "^9.39.4",
+    "globals": "^17.6.0"
   }
 }

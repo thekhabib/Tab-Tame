@@ -29,6 +29,16 @@ chrome.storage.local.get({ tabActivity: {} }, ({ tabActivity }) => {
   Object.assign(tabLastActive, tabActivity);
 });
 
+// On browser launch, reset all timestamps to now so stale persisted values
+// from a previous session don't cause an immediate idle-close sweep.
+chrome.runtime.onStartup.addListener(async () => {
+  const tabs = await chrome.tabs.query({});
+  const now = Date.now();
+  for (const k of Object.keys(tabLastActive)) delete tabLastActive[k];
+  for (const t of tabs) tabLastActive[t.id] = now;
+  chrome.storage.local.set({ tabActivity: { ...tabLastActive } });
+});
+
 chrome.tabs.onActivated.addListener(({ tabId }) => touchTab(tabId));
 chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   if (changeInfo.status === 'complete') touchTab(tabId);
@@ -56,7 +66,8 @@ chrome.alarms.onAlarm.addListener(async alarm => {
   for (const tab of tabs) {
     if (tab.active || tab.pinned) continue;
     const last = tabLastActive[tab.id];
-    if (last && now - last > cutoff) chrome.tabs.remove(tab.id);
+    if (last === undefined) { tabLastActive[tab.id] = now; continue; }
+    if (now - last > cutoff) chrome.tabs.remove(tab.id);
   }
 });
 

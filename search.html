@@ -73,6 +73,19 @@
       font-size: 11px; color: #aaa;
       padding: 6px 14px 4px;
     }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #1f1f1f; color: #e8eaed; }
+      .search-wrap { background: #1f1f1f; border-bottom-color: #2d2d2d; }
+      #searchInput { background: #2a2a2a; border-color: #4a4a4a; color: #e8eaed; }
+      #searchInput:focus { border-color: #8ab4f8; box-shadow: 0 0 0 2px rgba(138,180,248,.2); }
+      .tab-item { border-bottom-color: #2d2d2d; }
+      .tab-item:hover { background: #2a2a2a; }
+      .tab-item.focused { background: #1e3a5f; }
+      .tab-title { color: #e8eaed; }
+      .tab-url, .count, .no-results { color: #80868b; }
+      .tab-win { color: #5f6368; }
+    }
   </style>
 </head>
 <body>
