@@ -93,13 +93,75 @@
 
     .disabled-overlay { opacity: .45; pointer-events: none; }
 
+    /* Park */
+    .park-row {
+      padding: 10px 16px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .btn-park {
+      font-size: 12px; padding: 6px 12px;
+      background: #1a73e8; color: #fff;
+      border: none; border-radius: 20px;
+      cursor: pointer; font-weight: 600;
+      transition: background .15s; flex-shrink: 0;
+    }
+    .btn-park:hover { background: #1557b0; }
+    .btn-park:disabled { background: #ccc; cursor: not-allowed; }
+    .park-meta { font-size: 11px; color: #999; margin-top: 2px; }
+    .park-clear {
+      display: inline-block; margin-top: 4px;
+      font-size: 11px; color: #1a73e8;
+      cursor: pointer; background: none; border: none; padding: 0;
+      text-decoration: underline;
+    }
+    .park-clear:disabled { color: #bbb; cursor: not-allowed; text-decoration: none; }
+
+    /* Sessions list */
+    .sessions {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 4px 0;
+    }
+    .sessions-empty {
+      padding: 6px 16px 10px;
+      font-size: 11px; color: #aaa;
+    }
+    .session-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+    }
+    .session-row:hover { background: rgba(0,0,0,.03); }
+    .session-info { flex: 1; min-width: 0; }
+    .session-title {
+      font-size: 12px; color: #333;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .session-sub { font-size: 10px; color: #999; }
+    .btn-restore {
+      background: none; border: 1px solid #1a73e8;
+      color: #1a73e8; border-radius: 50%;
+      width: 24px; height: 24px; cursor: pointer;
+      font-size: 14px; line-height: 1; padding: 0;
+      flex-shrink: 0;
+      transition: background .15s, color .15s;
+    }
+    .btn-restore:hover { background: #1a73e8; color: #fff; }
+    .sessions-link {
+      display: block;
+      padding: 8px 16px;
+      font-size: 11px; color: #1a73e8;
+      text-decoration: none; cursor: pointer;
+      border-top: 1px solid #f0f0f0;
+    }
+    .sessions-link:hover { text-decoration: underline; }
+
     @media (prefers-color-scheme: dark) {
       body { color: #e8eaed; background: #1f1f1f; }
       .logo { color: #8ab4f8; }
       .subtitle { color: #9aa0a6; }
-      .header, .row, .site-row, .stats { border-bottom-color: #2d2d2d; }
+      .header, .row, .site-row, .stats, .park-row { border-bottom-color: #2d2d2d; }
       .row-label { color: #d0d3d6; }
-      .row-label small, .stats-label, .site-domain + .site-row > div > div, .shortcut { color: #80868b; }
+      .row-label small, .stats-label, .site-domain + .site-row > div > div, .shortcut, .park-meta { color: #80868b; }
       .slider { background: #5f6368; }
       input:checked + .slider { background: #8ab4f8; }
       .site-rule-select { border-color: #8ab4f8; color: #8ab4f8; }
@@ -107,6 +169,18 @@
       .stats { color: #d0d3d6; }
       .stats-num { color: #8ab4f8; }
       .btn-options { color: #8ab4f8; }
+      .btn-park { background: #8ab4f8; color: #1f1f1f; }
+      .btn-park:hover { background: #aecbfa; }
+      .btn-park:disabled { background: #3a3a3a; color: #80868b; }
+      .park-clear { color: #8ab4f8; }
+      .park-clear:disabled { color: #5f6368; }
+      .sessions { border-bottom-color: #2d2d2d; }
+      .session-row:hover { background: rgba(255,255,255,.04); }
+      .session-title { color: #d0d3d6; }
+      .session-sub, .sessions-empty { color: #80868b; }
+      .btn-restore { border-color: #8ab4f8; color: #8ab4f8; }
+      .btn-restore:hover { background: #8ab4f8; color: #1f1f1f; }
+      .sessions-link { color: #8ab4f8; border-top-color: #2d2d2d; }
     }
   </style>
 </head>
@@ -159,6 +233,19 @@
       <span class="slider"></span>
     </label>
   </div>
+
+  <!-- Save & close tabs -->
+  <div class="park-row" id="parkRow">
+    <div class="row-label">
+      Save &amp; close tabs
+      <div class="park-meta" id="parkMeta">Close other tabs and save them for later</div>
+      <button class="park-clear" id="btnParkAll" hidden></button>
+    </div>
+    <button class="btn-park" id="btnPark">Save</button>
+  </div>
+
+  <!-- Recent saved sessions -->
+  <div class="sessions" id="sessionsBox"></div>
 
   <!-- Stats -->
   <div class="stats">

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-05-18
+
+### Added
+- **Save & close tabs**: new popup button closes every non-pinned non-active tab in the current window and saves them to a named session. Restricted URLs (`chrome://`, `chrome-extension://`, `file://`, etc.) are skipped because they cannot be reopened by the extension. The button shows the exact number of tabs that will be saved, and is disabled when nothing is parkable. A secondary **Save all N and clear →** link parks the active content tab as well and opens a blank new tab so the window doesn't go empty.
+- Options page auto-refreshes when the parked session list changes (e.g. after parking from the popup).
+- **Recent sessions** in the popup: the latest 3 saved sessions are listed inline with a one-click restore button each (restores into the current window for quick resume), plus a "View all sessions" link to the full Options panel.
+- **Saved Sessions** panel in Options: lists every parked session with auto-generated timestamped name, tab count, inline rename, **Restore here** (opens session in the current window), **New window** (opens session in a separate window) — both delete the session afterwards — per-tab open (drops that tab from the session), per-tab remove, and **Delete** session. Up to 100 sessions retained.
+- New `background.js` message handlers: `park_tabs`, `restore_session`, `restore_tab`, `delete_session`, `rename_session`. Storage schema extended with `parkedSessions: []`.
+- Playwright e2e coverage for the full park/restore flow (6 tests).
+
 ## [1.0.8] — 2026-05-18
 
 ### Fixed
@@ -91,7 +101,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Toggle hotkey (`Alt+Shift+S`).
 - Redirect counter stored in local storage.
 
-[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.8...HEAD
+[Unreleased]: https://github.com/thekhabib/Tab-Tame/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.8...v1.1.0
 [1.0.8]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.7...v1.0.8
 [1.0.6]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/thekhabib/Tab-Tame/compare/v1.0.4...v1.0.5

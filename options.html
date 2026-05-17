@@ -195,32 +195,85 @@
     }
     .toast.show { opacity: 1; }
 
+    /* Saved Sessions */
+    .sessions-list { padding: 0 18px 14px; }
+    .session-item {
+      background: #f8f9fa; border-radius: 8px;
+      padding: 10px 12px; margin-top: 8px;
+    }
+    .session-head {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .session-name {
+      flex: 1; font-weight: 600; font-size: 13px;
+      background: transparent; border: 1px solid transparent;
+      border-radius: 6px; padding: 4px 8px; outline: none;
+      color: inherit; min-width: 0;
+    }
+    .session-name:hover { border-color: #ddd; }
+    .session-name:focus { border-color: #1a73e8; background: #fff; }
+    .session-meta { font-size: 11px; color: #888; padding: 4px 8px 6px; }
+    .session-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .btn-session {
+      font-size: 11px; padding: 4px 10px;
+      border: 1px solid #ddd; border-radius: 16px;
+      background: #fff; cursor: pointer; color: #444;
+      transition: border-color .15s, color .15s;
+    }
+    .btn-session:hover { border-color: #1a73e8; color: #1a73e8; }
+    .btn-session.danger:hover { border-color: #d93025; color: #d93025; }
+    .session-tabs { margin-top: 6px; }
+    .session-tab {
+      display: flex; align-items: center; gap: 8px;
+      padding: 4px 8px; font-size: 12px;
+      border-radius: 6px;
+    }
+    .session-tab:hover { background: rgba(0,0,0,.04); }
+    .session-tab img { width: 14px; height: 14px; flex-shrink: 0; }
+    .session-tab-title {
+      flex: 1; min-width: 0;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      color: #1a73e8; cursor: pointer; text-decoration: none;
+    }
+    .session-tab-title:hover { text-decoration: underline; }
+    .session-tab-remove {
+      background: none; border: none; cursor: pointer;
+      color: #bbb; font-size: 14px; line-height: 1; padding: 0 4px;
+    }
+    .session-tab-remove:hover { color: #d93025; }
+
     @media (prefers-color-scheme: dark) {
       body { color: #e8eaed; background: #1a1a1a; }
       h1 { color: #8ab4f8; }
       .section { background: #2a2a2a; border-color: #3a3a3a; }
       .section-title { color: #9aa0a6; }
       .row { border-bottom-color: #3a3a3a; }
-      .row-label span, .hint, .stat-label, .empty-list { color: #80868b; }
+      .row-label span, .hint, .stat-label, .empty-list, .session-meta { color: #80868b; }
       .slider { background: #5f6368; }
       input:checked + .slider { background: #8ab4f8; }
-      .num-input, .add-input, .rule-type-select, .btn-io {
+      .num-input, .add-input, .rule-type-select, .btn-io, .btn-session {
         background: #1f1f1f; border-color: #4a4a4a; color: #e8eaed;
       }
       .num-input:focus, .add-input:focus, .rule-type-select:focus { border-color: #8ab4f8; }
-      .rule-item { background: #1f1f1f; }
+      .rule-item, .session-item { background: #1f1f1f; }
       .rule-badge.same { background: #1e3a5f; color: #8ab4f8; }
       .rule-badge.new { background: #5c2b29; color: #f28b82; }
       .btn-remove { color: #5f6368; }
       .btn-remove:hover { color: #f28b82; }
       .btn-add { background: #8ab4f8; color: #1f1f1f; }
       .btn-add:hover { background: #aecbfa; }
-      .btn-io:hover { border-color: #8ab4f8; color: #8ab4f8; }
+      .btn-io:hover, .btn-session:hover { border-color: #8ab4f8; color: #8ab4f8; }
+      .btn-session.danger:hover { border-color: #f28b82; color: #f28b82; }
       .btn-reset { border-color: #4a4a4a; color: #9aa0a6; }
       .btn-reset:hover { border-color: #f28b82; color: #f28b82; }
       .stat-num { color: #8ab4f8; }
-      .hint a { color: #8ab4f8; }
+      .hint a, .session-tab-title { color: #8ab4f8; }
       .toast { background: #e8eaed; color: #1f1f1f; }
+      .session-name:hover { border-color: #4a4a4a; }
+      .session-name:focus { border-color: #8ab4f8; background: #1f1f1f; }
+      .session-tab:hover { background: rgba(255,255,255,.04); }
+      .session-tab-remove { color: #5f6368; }
+      .session-tab-remove:hover { color: #f28b82; }
     }
   </style>
 </head>
@@ -304,6 +357,17 @@
       Keyboard shortcuts: configure tab switching (Alt+1..9) at
       <a href="#" id="shortcutsLink">chrome://extensions/shortcuts</a>
     </div>
+  </div>
+
+  <!-- Saved Sessions -->
+  <div class="section">
+    <div class="section-title">Saved Sessions</div>
+    <div class="row" style="border-bottom:1px solid #f2f2f2; padding-bottom:10px;">
+      <div class="row-label" style="font-size:12px;color:#888;">
+        Parked tabs from the popup. <strong>Restore here</strong> opens tabs in the current window; <strong>New window</strong> opens them in a separate window. Both remove the session afterwards.
+      </div>
+    </div>
+    <div class="sessions-list" id="sessionsList"></div>
   </div>
 
   <!-- Stats -->

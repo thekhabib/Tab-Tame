@@ -22,6 +22,7 @@ Works on any Chromium-based browser with MV3: Chrome, Edge, Brave, Opera, Vivald
 - **Tab limit** — cap tabs per window; new tabs above the cap auto-close.
 - **Duplicate blocker** — focus an existing tab instead of opening a duplicate URL.
 - **Idle close** — auto-close inactive non-pinned tabs after N minutes; timestamps reset on browser launch.
+- **Park tabs** — close other tabs in the current window and save them to a named session; restore any session with one click (current window or a new window).
 - **Tab search** — `Ctrl+Shift+F` opens a fuzzy search popup.
 - **Quick switch** — `Ctrl+Shift+1` … `9` jump to tabs by index.
 - **Stats + Import/Export** — redirect counter with reset; JSON backup with schema-validated restore.
@@ -35,13 +36,15 @@ Works on any Chromium-based browser with MV3: Chrome, Edge, Brave, Opera, Vivald
 
 **Chrome Web Store:** coming soon.
 
-**Manual:** download [tabtame-v1.0.8.zip](https://github.com/thekhabib/Tab-Tame/releases/download/v1.0.8/tabtame-v1.0.8.zip), unzip, open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, select the folder.
+**Manual:** download [tabtame-v1.1.0.zip](https://github.com/thekhabib/Tab-Tame/releases/download/v1.1.0/tabtame-v1.1.0.zip), unzip, open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, select the folder.
 
 ---
 
 ## Usage
 
 **Popup** (click the icon): master toggle, per-site rule, stats.
+
+**Park tabs:** in the popup, click **Save** to close every non-pinned tab in the current window and save them to a session named with today's timestamp. The latest 3 sessions appear inline in the popup with a ↻ button that restores into the current window. The Options page hosts the full list, with per-tab open/remove, **Restore here**, **New window**, rename, and delete. A secondary **Save all N and clear →** link in the popup also parks the active tab and opens a fresh new tab.
 
 **Options** (right-click icon → Options):
 
@@ -53,6 +56,7 @@ Works on any Chromium-based browser with MV3: Chrome, Edge, Brave, Opera, Vivald
 | Duplicate blocker | `off` | Switch to existing tab instead of opening a duplicate |
 | Idle close | `0` | Minutes of inactivity before non-active, non-pinned tabs close (`0` = disabled) |
 | Site rules | `{}` | Per-domain overrides |
+| Saved Sessions | `[]` | Parked tab sessions — restore here / in a new window, rename, delete; up to 100 retained |
 | Stats | — | Redirect counter + **Reset** |
 | Backup | — | **Export** writes `tabtame-settings.json`; **Import** restores a JSON file (malformed files rejected) |
 

@@ -5,7 +5,8 @@ const DEFAULTS = {
   tabLimit: 0,
   idleClose: 0,
   siteRules: {},
-  stats: { redirected: 0 }
+  stats: { redirected: 0 },
+  parkedSessions: []
 };
 
 let settings = {};
@@ -36,6 +37,150 @@ function render() {
   document.getElementById('idleClose').value          = settings.idleClose;
   document.getElementById('statNum').textContent      = (settings.stats?.redirected ?? 0).toLocaleString();
   renderRules();
+  renderSessions();
+}
+
+function sendMessage(msg) {
+  return new Promise(r => chrome.runtime.sendMessage(msg, r));
+}
+
+function formatTimestamp(iso) {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleString();
+  } catch {
+    return iso;
+  }
+}
+
+// Favicons rely on the URL captured at park time. We never fetch from a third party
+// (would leak hostnames) — broken icons are simply hidden via onerror.
+
+function renderSessions() {
+  const list = document.getElementById('sessionsList');
+  const sessions = settings.parkedSessions ?? [];
+  if (sessions.length === 0) {
+    list.innerHTML = '<div class="empty-list">No parked sessions yet. Use the popup’s Park button.</div>';
+    return;
+  }
+  list.innerHTML = '';
+  sessions.forEach(session => list.appendChild(renderSession(session)));
+}
+
+function renderSession(session) {
+  const item = document.createElement('div');
+  item.className = 'session-item';
+
+  const head = document.createElement('div');
+  head.className = 'session-head';
+
+  const nameInput = document.createElement('input');
+  nameInput.className = 'session-name';
+  nameInput.value = session.name;
+  nameInput.spellcheck = false;
+  nameInput.addEventListener('change', async () => {
+    const name = nameInput.value.trim() || session.name;
+    nameInput.value = name;
+    await sendMessage({ action: 'rename_session', sessionId: session.id, name });
+    await load();
+  });
+
+  const actions = document.createElement('div');
+  actions.className = 'session-actions';
+
+  const restoreHereBtn = document.createElement('button');
+  restoreHereBtn.className = 'btn-session';
+  restoreHereBtn.textContent = 'Restore here';
+  restoreHereBtn.title = 'Open all tabs in this window';
+  restoreHereBtn.addEventListener('click', async () => {
+    restoreHereBtn.disabled = true;
+    await sendMessage({
+      action: 'restore_session',
+      sessionId: session.id,
+      options: { newWindow: false }
+    });
+    await load();
+    toast('Restored');
+  });
+
+  const restoreNewBtn = document.createElement('button');
+  restoreNewBtn.className = 'btn-session';
+  restoreNewBtn.textContent = 'New window';
+  restoreNewBtn.title = 'Open all tabs in a new window';
+  restoreNewBtn.addEventListener('click', async () => {
+    restoreNewBtn.disabled = true;
+    await sendMessage({
+      action: 'restore_session',
+      sessionId: session.id,
+      options: { newWindow: true }
+    });
+    await load();
+    toast('Restored');
+  });
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'btn-session danger';
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.addEventListener('click', async () => {
+    if (!confirm(`Delete session "${session.name}"?`)) return;
+    await sendMessage({ action: 'delete_session', sessionId: session.id });
+    await load();
+    toast('Deleted');
+  });
+
+  actions.append(restoreHereBtn, restoreNewBtn, deleteBtn);
+  head.append(nameInput, actions);
+
+  const meta = document.createElement('div');
+  meta.className = 'session-meta';
+  meta.textContent = `${session.tabs.length} tab${session.tabs.length === 1 ? '' : 's'} · ${formatTimestamp(session.createdAt)}`;
+
+  const tabsList = document.createElement('div');
+  tabsList.className = 'session-tabs';
+  session.tabs.forEach((tab, idx) => {
+    const row = document.createElement('div');
+    row.className = 'session-tab';
+
+    const img = document.createElement('img');
+    if (tab.favIconUrl) {
+      img.src = tab.favIconUrl;
+      img.onerror = () => { img.style.visibility = 'hidden'; };
+    } else {
+      img.style.visibility = 'hidden';
+    }
+
+    const link = document.createElement('a');
+    link.className = 'session-tab-title';
+    link.href = tab.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = tab.title || tab.url;
+    link.title = tab.url;
+    link.addEventListener('click', async e => {
+      e.preventDefault();
+      await sendMessage({ action: 'restore_tab', sessionId: session.id, tabIndex: idx });
+      await load();
+    });
+
+    const remove = document.createElement('button');
+    remove.className = 'session-tab-remove';
+    remove.title = 'Remove from session';
+    remove.textContent = '×';
+    remove.addEventListener('click', async () => {
+      const sessions = settings.parkedSessions.map(s => {
+        if (s.id !== session.id) return s;
+        return { ...s, tabs: s.tabs.filter((_, i) => i !== idx) };
+      }).filter(s => s.tabs.length > 0);
+      set({ parkedSessions: sessions });
+      renderSessions();
+    });
+
+    row.append(img, link, remove);
+    tabsList.appendChild(row);
+  });
+
+  item.append(head, meta, tabsList);
+  return item;
 }
 
 function renderRules() {
@@ -163,6 +308,11 @@ document.getElementById('btnImport').addEventListener('click', () => {
     reader.readAsText(file);
   });
   input.click();
+});
+
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area !== 'local') return;
+  if (Object.keys(changes).some(k => k in DEFAULTS)) load();
 });
 
 load();
