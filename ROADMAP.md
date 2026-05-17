@@ -2,11 +2,14 @@
 
 > **Eslatma:** Bu fayl `.gitignore` da, faqat lokal. Public roadmap `CHANGELOG.md` + GitHub Issues orqali ko'rsatiladi.
 
-**Joriy holat (2026-05-15):**
-- ✅ v1.0.1 GitHub Release published
+**Joriy holat (2026-05-18):**
+- ✅ v1.0.8 GitHub Release published
 - ✅ MAIN world `inject.js` orqali `window.open` patch (eskiz.uz Angular tasdiqladi)
 - ✅ MIT, README, CHANGELOG, CONTRIBUTING, PRIVACY, SECURITY
-- ✅ GitHub Actions: lint + release (tag push da avtomat zip)
+- ✅ GitHub Actions: CI (eslint + Playwright e2e) + Release (tag push da avtomat zip)
+- ✅ Playwright e2e test suite (5/5 yashil)
+- ✅ Dark mode (prefers-color-scheme)
+- ✅ Service worker restart edge case (idle close timer reset)
 - ❌ Chrome Web Store — yuklash kutilmoqda
 
 ---
@@ -48,21 +51,21 @@
 ### Bugfix / polish
 - [ ] iframe lar ichida `inject.js` test qilish (cross-origin frame edge case)
 - [ ] YouTube, Twitter, Reddit kabi heavy SPA larda regression test
-- [ ] `noopener`/`noreferrer` removal — security implications hujjatlash
-- [ ] Service worker restart edge case (idle close timer)
+- [x] `noopener`/`noreferrer` removal — security implications hujjatlash (PRIVACY.md)
+- [x] Service worker restart edge case (idle close timer) — v1.0.8
 
 ### Yangi feature lar
-- [ ] **Whitelist/blacklist UX** — domen ro'yxatini import/export
+- [x] **Whitelist/blacklist UX** — settings import/export (schema validation) — v1.0.7
 - [ ] **Stats dashboard** — vaqt bo'yicha grafik (kunlik redirect)
 - [ ] **Undo redirect** — agar yanglish redirect bo'lsa, popup orqali "Open in new tab anyway"
 - [ ] **Modifier override** — `Cmd/Ctrl+click` bilan vaqtinchalik new tab ochish (chrome o'zi qiladi-ku, lekin tekshir)
 - [ ] **Group tabs** — duplicate blocker yoniga "group similar URLs" optsiyasi
-- [ ] **Dark mode** — popup/options uchun
+- [x] **Dark mode** — popup/options/search uchun — v1.0.8
 
 ### Tech debt
-- [ ] `actions/checkout@v4` → v5 yangilash (Node 20 deprecation 2026-06-02)
-- [ ] `web-ext lint` ni `|| true` dan olib tashlab strict qilish
-- [ ] Unit test (yoq hozir) — Vitest yoki Playwright bilan e2e
+- [x] `actions/checkout@v4` → v5 yangilash (Node 20 deprecation 2026-06-02) — v1.0.7
+- [x] Strict lint CI — eslint qo'llanildi (web-ext Firefox-only) — v1.0.8
+- [x] e2e test — Playwright bilan (5 test) — v1.0.7
 
 ---
 

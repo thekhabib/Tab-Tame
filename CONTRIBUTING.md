@@ -8,7 +8,7 @@ Thanks for your interest. PRs, bug reports, and feature requests are welcome.
 2. Clone your fork:
    ```bash
    git clone git@github.com:<your-username>/Tab-Tame.git
-   cd TabTame
+   cd Tab-Tame
    ```
 3. Create a feature branch:
    ```bash
@@ -58,7 +58,17 @@ Keep the subject under 72 chars. The body should explain **why**, not what.
 
 ## Testing
 
-There is no automated test suite yet. Manual checklist for any change to `content.js` / `inject.js` / `background.js`:
+Automated:
+
+```bash
+npm install     # one-time
+npm run lint    # eslint
+npm test        # Playwright e2e (Chromium)
+```
+
+Both run in CI on every push and PR; the release workflow also runs them before publishing a tag.
+
+Manual smoke test for any change to `content.js` / `inject.js` / `background.js`:
 
 - [ ] Plain HTML page with `<a target="_blank">` → opens in current tab.
 - [ ] SPA (e.g. an Angular/React app using `window.open`) → opens in current tab.
@@ -73,10 +83,12 @@ If you add a new permission, document **why** in the PR description.
 
 ## Pull request checklist
 
+- [ ] `npm run lint` passes.
+- [ ] `npm test` passes.
 - [ ] CHANGELOG.md updated under `## [Unreleased]`.
 - [ ] README updated if user-facing behavior changed.
 - [ ] Manifest version **not** bumped (maintainers handle releases).
-- [ ] Manual test checklist above passes.
+- [ ] Manual smoke checklist above passes for code changes.
 
 ## Reporting bugs
 

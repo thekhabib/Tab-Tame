@@ -12,7 +12,10 @@ What does this PR do? Why?
 
 ## Testing
 
-How did you verify this works? Checked items from the [manual checklist](../CONTRIBUTING.md#testing):
+- [ ] `npm run lint` passes
+- [ ] `npm test` passes (Playwright e2e)
+
+Manual smoke ([full checklist](../CONTRIBUTING.md#testing)):
 
 - [ ] Plain HTML `target="_blank"` redirect works
 - [ ] SPA `window.open` redirect works
